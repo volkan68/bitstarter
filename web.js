@@ -4,8 +4,10 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-    var Text = fs.readFile("index.html").toString('utf-8');
-    response.send(Text);
+    var Text = new Buffer(1024);
+    Text = fs.readFile("index.html");
+    var Message = Text.toString('utf-8');
+    response.send(Message);
 //  response.send('Hello World2!');
 });
 
